@@ -1,0 +1,11 @@
+require 'sinatra/base'
+
+class Battle < Sinatra::Base
+
+  get '/' do
+    'Are you here for the battle?'
+  end
+
+  # start the server if ruby file executed directly
+  run! if app_file == $0
+end
