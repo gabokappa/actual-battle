@@ -1,9 +1,9 @@
 class Player
   attr_reader :name, :hp
 
- def initialize(name)
+ def initialize(name, hp = 100)
    @name = name
-   @hp = 100
+   @hp = hp
  end
 
  def reduce_health
