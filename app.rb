@@ -5,6 +5,10 @@ require_relative 'lib/game'
 class Battle < Sinatra::Base
   enable :sessions
 
+before do
+  @game = Game.instance
+end
+
   get '/' do
      erb :index
     #'Testing infrastructure working!'
@@ -13,22 +17,23 @@ class Battle < Sinatra::Base
   post '/names' do
     player_1_name = Player.new(params[:player_1_name])
     player_2_name = Player.new(params[:player_2_name])
-    $game = Game.new(player_1_name, player_2_name)
+    @game = Game.create(player_1_name, player_2_name)
     redirect '/play'
   end
 
   get '/play' do
     # @player_1_name = $player_1_name.name
     # @player_2_name = $player_2_name.name
-    redirect '/loser' if $game.loser?
+
+    redirect '/loser' if @game.loser?
     erb :play
   end
 
   get '/attack' do
     #@player_1_name = $player_1_name.name
     # @player_2_name = $player_2_name.name
-    $game.attack($game.opponent)
-    $game.switch_turn
+    @game.attack(@game.opponent)
+    @game.switch_turn
     erb :confirm_attack
   end
 
