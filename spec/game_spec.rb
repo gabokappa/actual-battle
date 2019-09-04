@@ -31,6 +31,21 @@ describe Game do
       game.switch_turn
       expect(game.opponent).to eq game.player1
     end
+
+    it 'switches the attacker' do
+     game.switch_turn
+     expect(game.attacker).to eq game.player2
+   end
+
+  end
+
+  describe '#loser?' do
+    it 'returns a loser' do
+      player1 = Player.new("Dave")
+      player2 = Player.new("Mittens", 0)
+      test = Game.new(player1, player2)
+      expect(test.loser?).to eq(player2)
+    end
   end
 
 end

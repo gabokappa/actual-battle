@@ -20,6 +20,7 @@ class Battle < Sinatra::Base
   get '/play' do
     # @player_1_name = $player_1_name.name
     # @player_2_name = $player_2_name.name
+    redirect '/loser' if $game.loser?
     erb :play
   end
 
@@ -31,6 +32,9 @@ class Battle < Sinatra::Base
     erb :confirm_attack
   end
 
+  get '/loser' do
+    erb :lose
+  end
 
   # start the server if ruby file executed directly
   #run! if app_file == $0
