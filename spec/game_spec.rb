@@ -25,4 +25,12 @@ describe Game do
     game.attack(mittens)
     end
   end
+
+  describe '#switch_turn' do
+    it 'switches the "opponent"' do
+      game.switch_turn
+      expect(game.opponent).to eq game.player1
+    end
+  end
+
 end
