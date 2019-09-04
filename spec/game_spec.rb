@@ -31,6 +31,10 @@ describe Game do
       game.switch_turn
       expect(game.opponent).to eq game.player1
     end
+    it 'switches the attacker' do
+      game.switch_turn
+      expect(game.attacker).to eq game.player2
+    end
   end
 
 end
