@@ -22,11 +22,4 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it "reduces opponent's health" do
-    expect(mittens).to receive(:reduce_health)
-    dave.attack(mittens)
-  end
-end
-
 end
